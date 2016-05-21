@@ -1,7 +1,7 @@
 var AG = {};
 
 AG.SAVE = {
-  state: 'Shkreli'
+  state: 'Menu'
 };
 
 AG.Load = function(){};
