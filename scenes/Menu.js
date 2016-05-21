@@ -1,5 +1,7 @@
 AG.Menu = function(){};
 
+var buttonHelper = {};
+
 AG.Menu.prototype = {
   preload: function (){
     game.load.spritesheet("creditsButtonTemp", "Assets/Sprites/creditsButtonTemp.png", 314, 124);
@@ -12,9 +14,9 @@ AG.Menu.prototype = {
     console.log('You are in the Menu state');
     game.stage.backgroundColor = '#fff';
     
-    game.add.button(game.world.centerX, game.world.centerY, "creditsButtonTemp", null, null, 1, 2, null, 3)
-    game.add.button(game.world.centerX, game.world.centerY/3, "playButtonTemp", null, null, 1, 2, null, 3)
-    game.add.button(game.world.centerX, game.world.centerY*2/3, "settingsButtonTemp", null, null, 1, 2, null, 3)
+    buttonHelper.creditsButton = game.add.button(game.world.centerX, game.world.centerY, "creditsButtonTemp", null, null, 1, 2, null, 3)
+    buttonHelper.playButton = game.add.button(game.world.centerX, game.world.centerY/3, "playButtonTemp", null, null, 1, 2, null, 3)
+    buttonHelper.settings = game.add.button(game.world.centerX, game.world.centerY*2/3, "settingsButtonTemp", null, null, 1, 2, null, 3)
 
 
   },
