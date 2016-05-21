@@ -21,15 +21,15 @@ AG.Menu.prototype = {
     game.stage.backgroundColor = '#fff';
     
     //create buttons
-    buttonHelper.playButton = game.add.button(game.world.centerX, game.world.height - 50, "playButtonTemp", buttonHelper.startGame, null, 1, 2, 3, 1);
-    buttonHelper.settingsButton = game.add.button(game.world.width - 50, game.world.centerY*2/3, "settingsButtonTemp", null, null, 1, 2, 3, 1);
+    buttonHelper.playButton = game.add.button(game.world.centerX, game.world.height + 50, "playButtonTemp", buttonHelper.startGame, null, 1, 2, 3, 1);
+    buttonHelper.settingsButton = game.add.button(game.world.centerX, game.world.height + 50, "settingsButtonTemp", null, null, 1, 2, 3, 1);
     buttonHelper.creditsButton = game.add.button(game.world.centerX, game.world.height + 50, "creditsButtonTemp", null, null, 1, 2, 3, 1);
 
   
     //tween buttons
-    game.add.tween(buttonHelper.playButton).to( { y: game.world.centerY/3 }, 300, "Linear", true);
-    game.add.tween(buttonHelper.settingsButton).to( { x: game.world.centerX }, 300, "Linear", true);
-    game.add.tween(buttonHelper.creditsButton).to( { y: game.world.centerY }, 300, "Linear", true);
+    game.add.tween(buttonHelper.playButton).to( { y: game.world.centerY/3 }, 300, "Linear", true, 100);
+    game.add.tween(buttonHelper.settingsButton).to( { y: game.world.centerY*2/3 }, 300, "Linear", true, 200);
+    game.add.tween(buttonHelper.creditsButton).to( { y: game.world.centerY }, 300, "Linear", true, 300);
 
   },
 
