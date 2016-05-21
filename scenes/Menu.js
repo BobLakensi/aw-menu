@@ -1,6 +1,12 @@
 AG.Menu = function(){};
 
-var buttonHelper = {};
+//buttonHelper object to helper manage button stuff
+var buttonHelper = {
+  //what happens when play button is clicked
+  startGame: function (){
+    changeState("Cutscene");
+  }
+};
 
 AG.Menu.prototype = {
   preload: function (){
@@ -14,12 +20,12 @@ AG.Menu.prototype = {
     console.log('You are in the Menu state');
     game.stage.backgroundColor = '#fff';
     
-    buttonHelper.creditsButton = game.add.button(game.world.centerX, game.world.centerY, "creditsButtonTemp", null, null, 1, 2, null, 3)
-    buttonHelper.playButton = game.add.button(game.world.centerX, game.world.centerY/3, "playButtonTemp", null, null, 1, 2, null, 3)
-    buttonHelper.settings = game.add.button(game.world.centerX, game.world.centerY*2/3, "settingsButtonTemp", null, null, 1, 2, null, 3)
-
-
+    //create buttons
+    buttonHelper.creditsButton = game.add.button(game.world.centerX, game.world.centerY, "creditsButtonTemp", null, null, 1, 2, 3, 1)
+    buttonHelper.playButton = game.add.button(game.world.centerX, game.world.centerY/3, "playButtonTemp", buttonHelper.startGame, null, 1, 2, 3, 1)
+    buttonHelper.settingsButton = game.add.button(game.world.centerX, game.world.centerY*2/3, "settingsButtonTemp", null, null, 1, 2, 3, 1)
   },
+
   update: function(){
 
   }
