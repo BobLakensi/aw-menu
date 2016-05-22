@@ -12,11 +12,11 @@ var buttonHelper = {
   },
   
   createButtons: function () {
-    buttonHelper.playButton = game.add.button(game.world.centerX + 30, game.world.height + 50, "playButtonTemp",   buttonHelper.startGame, null, 1, 2, 3, 1);
+    buttonHelper.playButton = game.add.button(game.world.centerX + 50, game.world.height + 50, "playButtonTemp",   buttonHelper.startGame, null, 1, 2, 3, 1);
     buttonHelper.playButton.anchor.setTo(0.5);
-    buttonHelper.settingsButton = game.add.button(game.world.centerX + 30, game.world.height + 50, "settingsButtonTemp", null, null, 1, 2, 3, 1);
+    buttonHelper.settingsButton = game.add.button(game.world.centerX + 50, game.world.height + 50, "settingsButtonTemp", null, null, 1, 2, 3, 1);
     buttonHelper.settingsButton.anchor.setTo(0.5);
-    buttonHelper.creditsButton = game.add.button(game.world.centerX + 30, game.world.height + 50, "creditsButtonTemp", null, null, 1, 2, 3, 1);    
+    buttonHelper.creditsButton = game.add.button(game.world.centerX + 50, game.world.height + 50, "creditsButtonTemp", null, null, 1, 2, 3, 1);    
     buttonHelper.creditsButton.anchor.setTo(0.5);
     
     buttonHelper.playButton.events.onInputOver.add(buttonHelper.mouseOver, this);
