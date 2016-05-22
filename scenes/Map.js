@@ -15,24 +15,28 @@ var playerStuff = {
     if (direction == 1){
       //move up
       playerStuff.player.body.velocity.y = playerStuff.speed * - 1;
+      playerStuff.player.body.velocity.x = 0;
       //change image to face direction of movement
       playerStuff.player.loadTexture("robBackIMG");
       playerStuff.player.scale.x = playerStuff.scale;
     } else if (direction == 2) {
       //move left
       playerStuff.player.body.velocity.x = playerStuff.speed * - 1;
+      playerStuff.player.body.velocity.y = 0;
       //change image to face direction of movement
       playerStuff.player.loadTexture("robSideIMG");
       playerStuff.player.scale.x = - playerStuff.scale;
     } else if (direction == 3) {
       //move down
       playerStuff.player.body.velocity.y = playerStuff.speed;
+      playerStuff.player.body.velocity.x = 0;
       //change image to face direction of movement
       playerStuff.player.loadTexture("robFrontIMG");
       playerStuff.player.scale.x = playerStuff.scale;
     } else {
       //move right
       playerStuff.player.body.velocity.x = playerStuff.speed;
+      playerStuff.player.body.velocity.y = 0;
       //change image to face direction of movement
       playerStuff.player.loadTexture("robSideIMG");
       playerStuff.player.scale.x = playerStuff.scale;
