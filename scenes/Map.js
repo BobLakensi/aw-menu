@@ -54,7 +54,6 @@ var mapStuff = {
     //help manage all generic buildings
     genericBuildingStuff: {
       genericBuidlingArray: [],
-
       //create generric buildings
       createGenericBuildings: function () {
         for (var i = 0; i < 6; i ++){
@@ -97,7 +96,18 @@ var mapStuff = {
           return mapStuff.buildingStuff.genericBuildingStuff.genericBuildingStuff.scaleY[numToSet]; 
         } //else if
       } //function getGenericBuildingCoords 
-    } //object genericBuildingStuff
+    }, //object genericBuildingStuff
+    //help manage all special buildings 
+    specialBuildingStuff: {
+      specialBuildingArray: [],
+      
+      createSpecialBuildings: function () {
+        mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding = game.add.sprite(1500, 250, "blackMarketIMG");
+        mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding.scale.x = 0.3;
+        mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding.scale.y = 0.3;
+        mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray.push(mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding);
+      } //function createSpecialBuildings
+    } //object specialBuildings
   } //object buildingStuff
   
 } //mapStuff Object
@@ -138,8 +148,10 @@ AG.Map.prototype = {
     game.camera.follow(playerStuff.player)
     game.camera.deadzone = new Phaser.Rectangle(game.camera.width/2, game.camera.height/2, 150, 150)
     
-    //create generic buidlings
+    //create  buidlings
     mapStuff.buildingStuff.genericBuildingStuff.createGenericBuildings();
+    mapStuff.buildingStuff.specialBuildingStuff.createSpecialBuildings();
+
   },
   update: function(){
     //WASD keys to do stuff
