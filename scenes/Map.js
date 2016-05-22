@@ -1,9 +1,9 @@
-AG.Map = function(){};
+AG.Map = function () {};
   
 var helper = {
 
 
-}
+};
 
 //player object to help manage player stuff
 var playerStuff = {
@@ -42,11 +42,15 @@ var playerStuff = {
       playerStuff.player.scale.x = playerStuff.scale;
     } //else 
   } //move function
-} //playerStuff Object
+}; //playerStuff Object
 
 //map object to help manage map stuff
 var mapStuff = {
-  mapScale: 1
+  mapScale: 1,
+  map: null, 
+  
+  genericBuidlingArray: [],
+  genericBuilding1: null
 } //mapStuff Object
 
 AG.Map.prototype = {
@@ -55,6 +59,7 @@ AG.Map.prototype = {
     game.load.image("robSideIMG", "Assets/Sprites/robSide.png")
     game.load.image("robBackIMG", "Assets/Sprites/robBack.png")
     game.load.image("mapIMG", "Assets/Sprites/map.png")
+    game.load.image("genericBuildingIMG", "Assets/Sprites/genericBuilding.png")
     
   },
   
@@ -81,6 +86,11 @@ AG.Map.prototype = {
     game.camera.follow(playerStuff.player)
     game.camera.deadzone = new Phaser.Rectangle(game.camera.width/2, game.camera.height/2, 150, 150)
 
+    mapStuff.genericBuilding1 = game.add.sprite(130, 70, "genericBuildingIMG");
+    mapStuff.genericBuilding1.scale.x = 0.7;
+    mapStuff.genericBuilding1.scale.y = 0.7;
+
+    
   },
   update: function(){
     //WASD keys to do stuff
