@@ -3,7 +3,7 @@ AG.Menu = function(){};
 //buttonHelper object to helper manage button stuff
 var buttonHelper = {
   durationOfAnim: 700,
-  easeAnim: "Bounce",
+  easeAnim: "Elastic",
   delayAim: 100,
   
   //what happens when play button is clicked
