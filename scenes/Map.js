@@ -65,6 +65,9 @@ var mapStuff = {
       
       game.physics.enable(genericBuidling);
       mapStuff.genericBuidlingArray.push(genericBuidling);
+        
+      genericBuidling.body.immovable = true;
+      genericBuidling.body.moves = false;
     } //for 
   }, //function create generic buidlings
   
