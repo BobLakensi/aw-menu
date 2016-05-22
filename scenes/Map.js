@@ -40,11 +40,15 @@ var playerStuff = {
   } //move function
 } //playerStuff Object
 
+//map object to help manage map stuff
+var mapStuff = {} //mapStuff Object
+
 AG.Map.prototype = {
   preload: function () {
     game.load.image("robFrontIMG", "Assets/Sprites/robEagle.png")
     game.load.image("robSideIMG", "Assets/Sprites/robSide.png")
     game.load.image("robBackIMG", "Assets/Sprites/robBack.png")
+    game.load.image("mapIMG", "Assets/Sprites/map.png")
     
   },
   
@@ -54,6 +58,8 @@ AG.Map.prototype = {
     
     game.physics.startSystem(Phaser.Physics.ARCADE);
     
+    mapStuff.map = game.add.sprite (0, 0, "mapIMG");
+    
     playerStuff.player = game.add.sprite (game.world.centerX, game.world.centerY, "robFrontIMG");
     playerStuff.player.scale.x = playerStuff.scale;
     playerStuff.player.scale.y = playerStuff.scale;
@@ -61,6 +67,7 @@ AG.Map.prototype = {
     playerStuff.player.anchor.y = 0.5;
     
     game.physics.enable(playerStuff.player);
+    
     
 
   },
