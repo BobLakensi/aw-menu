@@ -1,8 +1,8 @@
 AG.Map = function(){};
   
 var helper = {
-  move: function () {
-    console.log("moving")
+  move: function (key, direction) {
+    console.log(direction)
   }
 
 }
@@ -35,9 +35,9 @@ AG.Map.prototype = {
   },
   update: function(){
     //WASD keys to do stuff
-    game.input.keyboard.addKey(Phaser.Keyboard.W).onDown.add(helper.move, this);
-    game.input.keyboard.addKey(Phaser.Keyboard.A).onDown.add(helper.move, this);
-    game.input.keyboard.addKey(Phaser.Keyboard.S).onDown.add(helper.move, this);
-    game.input.keyboard.addKey(Phaser.Keyboard.D).onDown.add(helper.move, this);
+    game.input.keyboard.addKey(Phaser.Keyboard.W).onDown.add(helper.move, null, null, 1);
+    game.input.keyboard.addKey(Phaser.Keyboard.A).onDown.add(helper.move, null, null, 2);
+    game.input.keyboard.addKey(Phaser.Keyboard.S).onDown.add(helper.move, null, null, 3);
+    game.input.keyboard.addKey(Phaser.Keyboard.D).onDown.add(helper.move, null, null, 4);
   }
 };
