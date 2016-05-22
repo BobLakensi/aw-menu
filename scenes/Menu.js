@@ -31,7 +31,9 @@ var buttonHelper = {
 };
 
 //object to help with animations
-var animHelper = {}
+var animHelper = {
+  robFront: null
+}
 
 AG.Menu.prototype = {
   preload: function (){
@@ -46,6 +48,8 @@ AG.Menu.prototype = {
   create: function(){
     console.log('You are in the Menu state');
     game.stage.backgroundColor = '#fff';
+      
+    animHelper.robFront = game.add.sprite(100, 100, "robFrontIMG");
     
     //create buttons
     buttonHelper.createButtons();
