@@ -46,7 +46,7 @@ var playerStuff = {
 
 //map object to help manage map stuff
 var mapStuff = {
-  mapScale: 1.2
+  mapScale: 1
 } //mapStuff Object
 
 AG.Map.prototype = {
