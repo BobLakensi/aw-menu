@@ -7,7 +7,7 @@ var helper = {
 
 //player object to help manage player stuff
 var playerStuff = {
-  speed: 250,
+  speed: 500,
   scale: 0.25,
   //called when WASD to move sprite
   move: function (key, direction) {
@@ -64,19 +64,22 @@ AG.Map.prototype = {
     
     game.physics.startSystem(Phaser.Physics.ARCADE);
     
+    game.world.setBounds(0, 0, 2048, 2048);
+    
     mapStuff.map = game.add.sprite (0, 0, "mapIMG");
     mapStuff.map.scale.x = mapStuff.mapScale;
     mapStuff.map.scale.y = mapStuff.mapScale;
      
-    playerStuff.player = game.add.sprite (game.world.centerX, game.world.centerY, "robFrontIMG");
+    playerStuff.player = game.add.sprite (game.camera.width/2, game.camera.height/2, "robFrontIMG");
     playerStuff.player.scale.x = playerStuff.scale;
     playerStuff.player.scale.y = playerStuff.scale;
     playerStuff.player.anchor.x = 0.5;  
     playerStuff.player.anchor.y = 0.5;
-    
     game.physics.enable(playerStuff.player);
+    playerStuff.player.body.collideWorldBounds = true;
     
-    
+    game.camera.follow(playerStuff.player)
+//    game.camera.deadzone = new Phaser.Rectangle(game.world.centerX, game.world.centerY, 300, 300)
 
   },
   update: function(){
