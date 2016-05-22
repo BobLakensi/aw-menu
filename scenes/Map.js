@@ -8,7 +8,7 @@ var helper = {
 //player object to help manage player stuff
 var playerStuff = {
   speed: 500,
-  scale: 0.25,
+  scale: 0.2,
   //called when WASD to move sprite
   move: function (key, direction) {
     //directions: 1 = up,   2 = left,   3 = down,   4 = right
