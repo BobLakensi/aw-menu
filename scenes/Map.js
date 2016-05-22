@@ -55,5 +55,14 @@ AG.Map.prototype = {
     game.input.keyboard.addKey(Phaser.Keyboard.A).onDown.add(playerStuff.move, null, null, 2);
     game.input.keyboard.addKey(Phaser.Keyboard.S).onDown.add(playerStuff.move, null, null, 3);
     game.input.keyboard.addKey(Phaser.Keyboard.D).onDown.add(playerStuff.move, null, null, 4);
-  }
+    
+    //if no buttons are pressed, dont move
+    if (!game.input.keyboard.isDown(Phaser.Keyboard.W) && 
+        !game.input.keyboard.isDown(Phaser.Keyboard.A) &&
+        !game.input.keyboard.isDown(Phaser.Keyboard.S) && 
+        !game.input.keyboard.isDown(Phaser.Keyboard.D)) {
+      playerStuff.player.body.velocity.x = 0;
+      playerStuff.player.body.velocity.y = 0;
+    } //if buttons not pressed
+  } //function update
 };
