@@ -64,7 +64,7 @@ var mapStuff = {
       genericBuidling.scale.y = mapStuff.getGenericBuildingStuff(4, i);
       
       game.physics.enable(genericBuidling);
-      mapStuff.genericBuidlingArray.push(genericBuidling)
+      mapStuff.genericBuidlingArray.push(genericBuidling);
     } //for 
   }, //function create generic buidlings
   
@@ -143,5 +143,10 @@ AG.Map.prototype = {
       playerStuff.player.body.velocity.x = 0;
       playerStuff.player.body.velocity.y = 0;
     } //if buttons not pressed
+    
+    for (var i = 0; i <= mapStuff.genericBuidlingArray.length; i++) {
+      game.physics.arcade.collide(mapStuff.genericBuidlingArray[i], playerStuff.player);  
+    } //for building collision
+    
   } //function update
 };
