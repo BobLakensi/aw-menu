@@ -1,9 +1,21 @@
 AG.Map = function () {};
   
-var helper = {
+var colliding;
 
+var textStuff = {
+  commandText: null,
+  createText: function () {
+    textStuff.commandText = game.add.text(game.camera.width/2, 650, "<SPACE> TO INTERACT ", { font: '64px Arial', fill: '#ffffff' });
+    textStuff.commandText.x = game.camera.width/2 - textStuff.commandText.width/2
+    textStuff.commandText.fill = "white";
+  },
+  
+  overlapping: function () {
+    console.log('colliding')
+    colliding = true; 
+  }
 
-};
+}
 
 //player object to help manage player stuff
 var playerStuff = {
@@ -165,6 +177,10 @@ AG.Map.prototype = {
     //create  buidlings
     mapStuff.buildingStuff.genericBuildingStuff.createGenericBuildings();
     mapStuff.buildingStuff.specialBuildingStuff.createSpecialBuildings();
+    
+    //create text
+    textStuff.createText();
+    textStuff.commandText.visible = false;
 
   },
   update: function(){
@@ -188,8 +204,18 @@ AG.Map.prototype = {
       game.physics.arcade.collide(mapStuff.buildingStuff.genericBuildingStuff.genericBuidlingArray[i], playerStuff.player);  
     } //for building collision
     for (var i = 0; i <= mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray.length; i++){
-      game.physics.arcade.collide(mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray[i], playerStuff.player); 
+      game.physics.arcade.collide(mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray[1], playerStuff.player);
     } //for buidling collision
+    
+    //ugly code for now, will fix later
+    game.physics.arcade.collide(mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray[0], playerStuff.player, textStuff.overlapping, null, this);
+
+    
+    if (colliding == true) {
+      textStuff.commandText.visible = true;
+    } else {
+      textStuff.commandText.visible = false;
+    }
     
   } //function update
 };
