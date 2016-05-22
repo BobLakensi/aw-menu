@@ -12,7 +12,6 @@ var textStuff = {
   
   overlapping: function () {
     console.log('colliding')
-    colliding = true; 
   }
 
 }
@@ -207,15 +206,11 @@ AG.Map.prototype = {
       game.physics.arcade.collide(mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray[1], playerStuff.player);
     } //for buidling collision
     
-    //ugly code for now, will fix later
-    game.physics.arcade.collide(mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray[0], playerStuff.player, textStuff.overlapping, null, this);
-
     
-    if (colliding == true) {
-      textStuff.commandText.visible = true;
-    } else {
-      textStuff.commandText.visible = false;
-    }
+    //ugly code for now, will fix later
+    //do stuff to switch states in the textStuff.overlapping
+    game.physics.arcade.collide(mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray[0], playerStuff.player, textStuff.overlapping, null, this);  
+
     
   } //function update
 };
