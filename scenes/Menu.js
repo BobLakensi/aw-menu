@@ -15,6 +15,14 @@ var buttonHelper = {
     buttonHelper.playButton = game.add.button(game.world.centerX, game.world.height + 50, "playButtonTemp",   buttonHelper.startGame, null, 1, 2, 3, 1);
     buttonHelper.settingsButton = game.add.button(game.world.centerX, game.world.height + 50, "settingsButtonTemp", null, null, 1, 2, 3, 1);
     buttonHelper.creditsButton = game.add.button(game.world.centerX, game.world.height + 50, "creditsButtonTemp", null, null, 1, 2, 3, 1);
+    
+    buttonHelper.playButton.events.onInputOver.add(buttonHelper.mouseOver, this);
+    buttonHelper.settingsButton.events.onInputOver.add(buttonHelper.mouseOver, this);
+    buttonHelper.creditsButton.events.onInputOver.add(buttonHelper.mouseOver, this);
+    
+    buttonHelper.playButton.events.onInputOut.add(buttonHelper.mouseLeave, this);
+    buttonHelper.settingsButton.events.onInputOut.add(buttonHelper.mouseLeave, this);
+    buttonHelper.creditsButton.events.onInputOut.add(buttonHelper.mouseLeave, this);
   },
   
   fixButtonPos: function () {
@@ -27,6 +35,14 @@ var buttonHelper = {
     game.add.tween(buttonHelper.playButton).to( { y: game.world.centerY/3 }, buttonHelper.durationOfAnim, buttonHelper.easeAnim, true, buttonHelper.delayAim);
     game.add.tween(buttonHelper.settingsButton).to( { y: game.world.centerY*2/3 }, buttonHelper.durationOfAnim, buttonHelper.easeAnim, true, buttonHelper.delayAim*2);
     game.add.tween(buttonHelper.creditsButton).to( { y: game.world.centerY }, buttonHelper.durationOfAnim, buttonHelper.easeAnim, true, buttonHelper.delayAim*3);
+  },
+  
+  mouseOver: function (button) {
+    game.add.tween(button.scale).to({ x: 1.2, y: 1.2}, 75, Phaser.Easing.Back.Out, true);
+  }, //function mouseOver
+  
+  mouseLeave: function (button) {
+    game.add.tween(button.scale).to({ x: 1, y: 1}, 75, Phaser.Easing.Back.IN, true);
   }
 };
 
