@@ -53,24 +53,27 @@ var mapStuff = {
   
   //create generric buildings
   createGenericBuildings: function () {
-    for (var i = 0; i < 5; i ++){
+    for (var i = 0; i < 6; i ++){
       var genericBuidling = game.add.sprite(
-        mapStuff.getGenericBuildingStuff(1, 0),
-        mapStuff.getGenericBuildingStuff(2, 0),
+        //get coords to spawn genericBuidling
+        mapStuff.getGenericBuildingStuff(1, i),
+        mapStuff.getGenericBuildingStuff(2, i),
         "genericBuildingIMG");
-      genericBuidling.scale.x = mapStuff.getGenericBuildingStuff(3, 0);
-      genericBuidling.scale.y = mapStuff.getGenericBuildingStuff(4, 0);
+      //get scale
+      genericBuidling.scale.x = mapStuff.getGenericBuildingStuff(3, i);
+      genericBuidling.scale.y = mapStuff.getGenericBuildingStuff(4, i);
       
+      game.physics.enable(genericBuidling);
       mapStuff.genericBuidlingArray.push(genericBuidling)
     } //for 
   }, //function create generic buidlings
   
   //hold all coordinates for generic buildings
   genericBuildingStuff: {
-    coordsX: [130],
-    coordsY: [200],
-    scaleX: [0.5],
-    scaleY: [0.5]
+    coordsX: [130, 1000, 550, 1450, 150, 1430],
+    coordsY: [200, 200, 750, 750, 1430, 1400],
+    scaleX: [0.5, 0.5, 0.5, 0.5, 0.3, 0.5],
+    scaleY: [0.5, 0.5, 0.6, 0.6, 0.4, 0.5]
   },  //object genericBuildingCoords
   
   //return coordinates of all generic buildings
