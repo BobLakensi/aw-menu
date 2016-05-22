@@ -1,5 +1,9 @@
 AG.Menu = function(){};
 
+WebFontConfig = {
+  google: { families: [ 'Montserrat::latin' ] }
+};
+
 //buttonHelper object to helper manage button stuff
 var buttonHelper = {
   durationOfAnim: 700,
@@ -73,8 +77,10 @@ AG.Menu.prototype = {
     game.load.spritesheet("playButtonTemp", "Assets/Sprites/playButtonTemp.png", 314, 125 );
     game.load.spritesheet("settingsButtonTemp", "Assets/Sprites/settingsButtonTemp.png", 314, 127);
     
-    game.load.audio("clickSound", "Assets/Sounds/buttonClick.mp3")
-    game.load.audio("mouseOverSound", "Assets/Sounds/mouseOver.mp3")
+    game.load.audio("clickSound", "Assets/Sounds/buttonClick.mp3");
+    game.load.audio("mouseOverSound", "Assets/Sounds/mouseOver.mp3");
+    
+    game.load.script("webFont", "//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js");
   },
 	
   create: function(){
@@ -91,7 +97,9 @@ AG.Menu.prototype = {
     buttonHelper.tweenButtons();
     
     sounds.mouseClick = game.add.audio("clickSound");
-    sounds.mouseOver = game.add.audio("mouseOverSound")
+    sounds.mouseOver = game.add.audio("mouseOverSound");
+    
+    var titleText = game.add.text(780, 850, "Awesome Game", { font: 'bold 128px Montserrat', fill: '#000000' });
 
   },
 
