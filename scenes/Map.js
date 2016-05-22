@@ -54,22 +54,38 @@ var mapStuff = {
   //create generric buildings
   createGenericBuildings: function () {
     for (var i = 0; i < 5; i ++){
-      var genericBuidling = game.add.sprite(130, 200, "genericBuildingIMG");
-      genericBuidling.scale.x = 0.5;
-      genericBuidling.scale.y = 0.5;
+      var genericBuidling = game.add.sprite(
+        mapStuff.getGenericBuildingStuff(1, 0),
+        mapStuff.getGenericBuildingStuff(2, 0),
+        "genericBuildingIMG");
+      genericBuidling.scale.x = mapStuff.getGenericBuildingStuff(3, 0);
+      genericBuidling.scale.y = mapStuff.getGenericBuildingStuff(4, 0);
       
       mapStuff.genericBuidlingArray.push(genericBuidling)
     } //for 
   }, //function create generic buidlings
   
   //hold all coordinates for generic buildings
-  genericBuildingCoords: {
-    
+  genericBuildingStuff: {
+    coordsX: [130],
+    coordsY: [200],
+    scaleX: [0.5],
+    scaleY: [0.5]
   },  //object genericBuildingCoords
   
   //return coordinates of all generic buildings
-  getGenericBuildingCoords: function () {
-    
+  getGenericBuildingStuff: function (numXY, numToSet) {
+    if (numXY == 1){
+      //return x stuff
+      return mapStuff.genericBuildingStuff.coordsX[numToSet];
+    } else if (numXY == 2){
+      return mapStuff.genericBuildingStuff.coordsY[numToSet];
+    } else if (numXY == 3){
+      //return scale stuff
+      return mapStuff.genericBuildingStuff.scaleX[numToSet];
+    } else if (numXY == 4){
+      return mapStuff.genericBuildingStuff.scaleY[numToSet]; 
+    } //else if
   } //function getGenericBuildingCoords 
 } //mapStuff Object
 
