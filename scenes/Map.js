@@ -49,51 +49,55 @@ var mapStuff = {
   mapScale: 1,
   map: null, 
   
+  //help manage all buildings in game
   buildingStuff: {
-    genericBuidlingArray: [],
-
-    //create generric buildings
-    createGenericBuildings: function () {
-      for (var i = 0; i < 6; i ++){
-        var genericBuidling = game.add.sprite(
-          //get coords to spawn genericBuidling
-          mapStuff.buildingStuff.getGenericBuildingStuff(1, i),
-          mapStuff.buildingStuff.getGenericBuildingStuff(2, i),
-          "genericBuildingIMG");
-        //get scale
-        genericBuidling.scale.x = mapStuff.buildingStuff.getGenericBuildingStuff(3, i);
-        genericBuidling.scale.y = mapStuff.buildingStuff.getGenericBuildingStuff(4, i);
-
-        game.physics.enable(genericBuidling);
-        mapStuff.buildingStuff.genericBuidlingArray.push(genericBuidling);
-
-        genericBuidling.body.immovable = true;
-        genericBuidling.body.moves = false;
-      } //for 
-    }, //function create generic buidlings
-
-    //hold all coordinates for generic buildings
+    //help manage all generic buildings
     genericBuildingStuff: {
-      coordsX: [130, 1000, 550, 1450, 150, 1430],
-      coordsY: [200, 200, 750, 750, 1430, 1400],
-      scaleX: [0.5, 0.5, 0.5, 0.5, 0.3, 0.5],
-      scaleY: [0.5, 0.5, 0.6, 0.6, 0.4, 0.5]
-    },  //object genericBuildingCoords
+      genericBuidlingArray: [],
 
-    //return coordinates of all generic buildings
-    getGenericBuildingStuff: function (numXY, numToSet) {
-      if (numXY == 1){
-        //return x stuff
-        return mapStuff.buildingStuff.genericBuildingStuff.coordsX[numToSet];
-      } else if (numXY == 2){
-        return mapStuff.buildingStuff.genericBuildingStuff.coordsY[numToSet];
-      } else if (numXY == 3){
-        //return scale stuff
-        return mapStuff.buildingStuff.genericBuildingStuff.scaleX[numToSet];
-      } else if (numXY == 4){
-        return mapStuff.buildingStuff.genericBuildingStuff.scaleY[numToSet]; 
-      } //else if
-    } //function getGenericBuildingCoords 
+      //create generric buildings
+      createGenericBuildings: function () {
+        for (var i = 0; i < 6; i ++){
+          var genericBuidling = game.add.sprite(
+            //get coords to spawn genericBuidling
+            mapStuff.buildingStuff.genericBuildingStuff.getGenericBuildingStuff(1, i),
+            mapStuff.buildingStuff.genericBuildingStuff.getGenericBuildingStuff(2, i),
+            "genericBuildingIMG");
+          //get scale
+          genericBuidling.scale.x = mapStuff.buildingStuff.genericBuildingStuff.getGenericBuildingStuff(3, i);
+          genericBuidling.scale.y = mapStuff.buildingStuff.genericBuildingStuff.getGenericBuildingStuff(4, i);
+
+          game.physics.enable(genericBuidling);
+          mapStuff.buildingStuff.genericBuildingStuff.genericBuidlingArray.push(genericBuidling);
+
+          genericBuidling.body.immovable = true;
+          genericBuidling.body.moves = false;
+        } //for 
+      }, //function create generic buidlings
+
+      //hold all coordinates for generic buildings
+      genericBuildingStuff: {
+        coordsX: [130, 1000, 550, 1450, 150, 1430],
+        coordsY: [200, 200, 750, 750, 1430, 1400],
+        scaleX: [0.5, 0.5, 0.5, 0.5, 0.3, 0.5],
+        scaleY: [0.5, 0.5, 0.6, 0.6, 0.4, 0.5]
+      },  //object genericBuildingCoords
+
+      //return coordinates of all generic buildings
+      getGenericBuildingStuff: function (numXY, numToSet) {
+        if (numXY == 1){
+          //return x stuff
+          return mapStuff.buildingStuff.genericBuildingStuff.genericBuildingStuff.coordsX[numToSet];
+        } else if (numXY == 2){
+          return mapStuff.buildingStuff.genericBuildingStuff.genericBuildingStuff.coordsY[numToSet];
+        } else if (numXY == 3){
+          //return scale stuff
+          return mapStuff.buildingStuff.genericBuildingStuff.genericBuildingStuff.scaleX[numToSet];
+        } else if (numXY == 4){
+          return mapStuff.buildingStuff.genericBuildingStuff.genericBuildingStuff.scaleY[numToSet]; 
+        } //else if
+      } //function getGenericBuildingCoords 
+    } //object genericBuildingStuff
   } //object buildingStuff
   
 } //mapStuff Object
@@ -135,7 +139,7 @@ AG.Map.prototype = {
     game.camera.deadzone = new Phaser.Rectangle(game.camera.width/2, game.camera.height/2, 150, 150)
     
     //create generic buidlings
-    mapStuff.buildingStuff.createGenericBuildings();
+    mapStuff.buildingStuff.genericBuildingStuff.createGenericBuildings();
   },
   update: function(){
     //WASD keys to do stuff
@@ -153,8 +157,8 @@ AG.Map.prototype = {
       playerStuff.player.body.velocity.y = 0;
     } //if buttons not pressed
     
-    for (var i = 0; i <= mapStuff.buildingStuff.genericBuidlingArray.length; i++) {
-      game.physics.arcade.collide(mapStuff.buildingStuff.genericBuidlingArray[i], playerStuff.player);  
+    for (var i = 0; i <= mapStuff.buildingStuff.genericBuildingStuff.genericBuidlingArray.length; i++) {
+      game.physics.arcade.collide(mapStuff.buildingStuff.genericBuildingStuff.genericBuidlingArray[i], playerStuff.player);  
     } //for building collision
     
   } //function update
