@@ -7,8 +7,8 @@ var helper = {
 
 //player object to help manage player stuff
 var playerStuff = {
-  speed: 100,
-  scale: 0.3,
+  speed: 250,
+  scale: 0.25,
   //called when WASD to move sprite
   move: function (key, direction) {
     //directions: 1 = up,   2 = left,   3 = down,   4 = right
@@ -41,7 +41,9 @@ var playerStuff = {
 } //playerStuff Object
 
 //map object to help manage map stuff
-var mapStuff = {} //mapStuff Object
+var mapStuff = {
+  mapScale: 1.2
+} //mapStuff Object
 
 AG.Map.prototype = {
   preload: function () {
@@ -59,7 +61,9 @@ AG.Map.prototype = {
     game.physics.startSystem(Phaser.Physics.ARCADE);
     
     mapStuff.map = game.add.sprite (0, 0, "mapIMG");
-    
+    mapStuff.map.scale.x = mapStuff.mapScale;
+    mapStuff.map.scale.y = mapStuff.mapScale;
+     
     playerStuff.player = game.add.sprite (game.world.centerX, game.world.centerY, "robFrontIMG");
     playerStuff.player.scale.x = playerStuff.scale;
     playerStuff.player.scale.y = playerStuff.scale;
