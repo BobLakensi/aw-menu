@@ -79,7 +79,7 @@ AG.Map.prototype = {
     playerStuff.player.body.collideWorldBounds = true;
     
     game.camera.follow(playerStuff.player)
-//    game.camera.deadzone = new Phaser.Rectangle(game.world.centerX, game.world.centerY, 300, 300)
+    game.camera.deadzone = new Phaser.Rectangle(game.camera.width/2, game.camera.height/2, 150, 150)
 
   },
   update: function(){
