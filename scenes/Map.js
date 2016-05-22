@@ -52,6 +52,8 @@ var playerStuff = {
       playerStuff.player.loadTexture("robSideIMG");
       playerStuff.player.scale.x = playerStuff.scale;
     } //else 
+    
+    sounds.robotMovingSound.play();
   } //move function
 }; //playerStuff Object
 
@@ -148,6 +150,7 @@ AG.Map.prototype = {
     game.load.image("blackMarketIMG", "Assets/Sprites/blackMarket.png");
     game.load.image("newsStandIMG", "Assets/Sprites/newStand.png");
     
+    game.load.audio("robotMovingSound", "Assets/Sounds/carDriving.mp3")
   },
   
   create: function(){
@@ -180,6 +183,8 @@ AG.Map.prototype = {
     //create text
     textStuff.createText();
     textStuff.commandText.visible = false;
+    
+    sounds.robotMovingSound = game.add.audio("robotMovingSound");
 
   },
   update: function(){
@@ -196,6 +201,7 @@ AG.Map.prototype = {
         !game.input.keyboard.isDown(Phaser.Keyboard.D)) {
       playerStuff.player.body.velocity.x = 0;
       playerStuff.player.body.velocity.y = 0;
+      sounds.robotMovingSound.stop();
     } //if buttons not pressed
     
     //building collision
