@@ -77,9 +77,9 @@ var mapStuff = {
       //hold all coordinates for generic buildings
       genericBuildingStuff: {
         coordsX: [130, 980, 550, 1450, 150, 1430],
-        coordsY: [200, 200, 750, 750, 1430, 1400],
-        scaleX: [0.5, 0.5, 0.5, 0.5, 0.3, 0.5],
-        scaleY: [0.5, 0.5, 0.6, 0.6, 0.4, 0.5]
+        coordsY: [200, 200, 750, 750, 1410, 1400],
+        scaleX: [0.5, 0.5, 0.5, 0.5, 0.4, 0.5],
+        scaleY: [0.5, 0.5, 0.6, 0.6, 0.5, 0.5]
       },  //object genericBuildingCoords
 
       //return coordinates of all generic buildings
@@ -111,9 +111,9 @@ var mapStuff = {
         mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding.body.immovable = true;
         mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding.body.moves = false;
         
-        mapStuff.buildingStuff.specialBuildingStuff.newsStand = game.add.sprite(400, 250, "newsStandIMG");
-        mapStuff.buildingStuff.specialBuildingStuff.newsStand.scale.x = 0.3;
-        mapStuff.buildingStuff.specialBuildingStuff.newsStand.scale.y = 0.3;
+        mapStuff.buildingStuff.specialBuildingStuff.newsStand = game.add.sprite(470, 1425, "newsStandIMG");
+        mapStuff.buildingStuff.specialBuildingStuff.newsStand.scale.x = 0.4;
+        mapStuff.buildingStuff.specialBuildingStuff.newsStand.scale.y = 0.4;
         mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray.push(mapStuff.buildingStuff.specialBuildingStuff.newsStand);
         game.physics.enable( mapStuff.buildingStuff.specialBuildingStuff.newsStand);
 
