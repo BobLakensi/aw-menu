@@ -51,13 +51,26 @@ var mapStuff = {
   
   genericBuidlingArray: [],
   
+  //create generric buildings
   createGenericBuildings: function () {
     for (var i = 0; i < 5; i ++){
       var genericBuidling = game.add.sprite(130, 200, "genericBuildingIMG");
       genericBuidling.scale.x = 0.5;
       genericBuidling.scale.y = 0.5;
+      
+      mapStuff.genericBuidlingArray.push(genericBuidling)
     } //for 
-  } //function create generic buidlings
+  }, //function create generic buidlings
+  
+  //hold all coordinates for generic buildings
+  genericBuildingCoords: {
+    
+  },  //object genericBuildingCoords
+  
+  //return coordinates of all generic buildings
+  getGenericBuildingCoords: function () {
+    
+  } //function getGenericBuildingCoords 
 } //mapStuff Object
 
 AG.Map.prototype = {
@@ -92,14 +105,9 @@ AG.Map.prototype = {
     
     game.camera.follow(playerStuff.player)
     game.camera.deadzone = new Phaser.Rectangle(game.camera.width/2, game.camera.height/2, 150, 150)
-
-    mapStuff.genericBuilding1 = game.add.sprite(130, 200, "genericBuildingIMG");
-    mapStuff.genericBuilding1.scale.x = 0.5;
-    mapStuff.genericBuilding1.scale.y = 0.5;
     
-    mapStuff.genericBuidlingArray.push(mapStuff.genericBuilding1)
-
-    
+    //create generic buidlings
+    mapStuff.createGenericBuildings();
   },
   update: function(){
     //WASD keys to do stuff
