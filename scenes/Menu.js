@@ -26,6 +26,10 @@ var buttonHelper = {
     buttonHelper.playButton.events.onInputOut.add(buttonHelper.mouseLeave, this);
     buttonHelper.settingsButton.events.onInputOut.add(buttonHelper.mouseLeave, this);
     buttonHelper.creditsButton.events.onInputOut.add(buttonHelper.mouseLeave, this);
+    
+    buttonHelper.playButton.events.onInputDown.add(buttonHelper.mouseClick, this);
+    buttonHelper.settingsButton.events.onInputDown.add(buttonHelper.mouseClick, this);
+    buttonHelper.creditsButton.events.onInputDown.add(buttonHelper.mouseClick, this);
   },
   
   fixButtonPos: function () {
@@ -42,10 +46,15 @@ var buttonHelper = {
   
   mouseOver: function (button) {
     game.add.tween(button.scale).to({ x: 1.2, y: 1.2}, 75, Phaser.Easing.Back.Out, true);
+    sounds.mouseOver.play();
   }, //function mouseOver
   
   mouseLeave: function (button) {
     game.add.tween(button.scale).to({ x: 1, y: 1}, 75, Phaser.Easing.Back.IN, true);
+  },  //function mouseLeave
+  
+  mouseClick: function (button) {
+    sounds.mouseClick.play();
   }
 };
 
@@ -54,6 +63,8 @@ var animHelper = {
   robFront: null
 }
 
+var sounds = {}
+
 AG.Menu.prototype = {
   preload: function (){
     game.load.image("robFrontIMG", "Assets/Sprites/robFront.png")
@@ -61,7 +72,9 @@ AG.Menu.prototype = {
     game.load.spritesheet("creditsButtonTemp", "Assets/Sprites/creditsButtonTemp.png", 314, 124);
     game.load.spritesheet("playButtonTemp", "Assets/Sprites/playButtonTemp.png", 314, 125 );
     game.load.spritesheet("settingsButtonTemp", "Assets/Sprites/settingsButtonTemp.png", 314, 127);
-
+    
+    game.load.audio("clickSound", "Assets/Sounds/buttonClick.mp3")
+    game.load.audio("mouseOverSound", "Assets/Sounds/mouseOver.mp3")
   },
 	
   create: function(){
@@ -76,7 +89,9 @@ AG.Menu.prototype = {
     buttonHelper.fixButtonPos();
     //tween buttons
     buttonHelper.tweenButtons();
-
+    
+    sounds.mouseClick = game.add.audio("clickSound");
+    sounds.mouseOver = game.add.audio("mouseOverSound")
 
   },
 
