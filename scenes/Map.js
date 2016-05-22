@@ -50,7 +50,14 @@ var mapStuff = {
   map: null, 
   
   genericBuidlingArray: [],
-  genericBuilding1: null
+  
+  createGenericBuildings: function () {
+    for (var i = 0; i < 5; i ++){
+      var genericBuidling = game.add.sprite(130, 200, "genericBuildingIMG");
+      genericBuidling.scale.x = 0.5;
+      genericBuidling.scale.y = 0.5;
+    } //for 
+  } //function create generic buidlings
 } //mapStuff Object
 
 AG.Map.prototype = {
@@ -86,9 +93,11 @@ AG.Map.prototype = {
     game.camera.follow(playerStuff.player)
     game.camera.deadzone = new Phaser.Rectangle(game.camera.width/2, game.camera.height/2, 150, 150)
 
-    mapStuff.genericBuilding1 = game.add.sprite(130, 70, "genericBuildingIMG");
-    mapStuff.genericBuilding1.scale.x = 0.7;
-    mapStuff.genericBuilding1.scale.y = 0.7;
+    mapStuff.genericBuilding1 = game.add.sprite(130, 200, "genericBuildingIMG");
+    mapStuff.genericBuilding1.scale.x = 0.5;
+    mapStuff.genericBuilding1.scale.y = 0.5;
+    
+    mapStuff.genericBuidlingArray.push(mapStuff.genericBuilding1)
 
     
   },
