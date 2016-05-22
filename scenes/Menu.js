@@ -2,6 +2,10 @@ AG.Menu = function(){};
 
 //buttonHelper object to helper manage button stuff
 var buttonHelper = {
+  durationOfAnim: 700,
+  easeAnim: "Bounce",
+  delayAim: 100,
+  
   //what happens when play button is clicked
   startGame: function (){
     changeState("Cutscene");
@@ -27,9 +31,9 @@ AG.Menu.prototype = {
 
   
     //tween buttons
-    game.add.tween(buttonHelper.playButton).to( { y: game.world.centerY/3 }, 300, "Linear", true, 100);
-    game.add.tween(buttonHelper.settingsButton).to( { y: game.world.centerY*2/3 }, 300, "Linear", true, 200);
-    game.add.tween(buttonHelper.creditsButton).to( { y: game.world.centerY }, 300, "Linear", true, 300);
+    game.add.tween(buttonHelper.playButton).to( { y: game.world.centerY/3 }, buttonHelper.durationOfAnim, buttonHelper.easeAnim, true, buttonHelper.delayAim);
+    game.add.tween(buttonHelper.settingsButton).to( { y: game.world.centerY*2/3 }, buttonHelper.durationOfAnim, buttonHelper.easeAnim, true, buttonHelper.delayAim*2);
+    game.add.tween(buttonHelper.creditsButton).to( { y: game.world.centerY }, buttonHelper.durationOfAnim, buttonHelper.easeAnim, true, buttonHelper.delayAim*3);
 
   },
 
