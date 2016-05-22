@@ -1,16 +1,31 @@
 AG.Map = function(){};
   
 var helper = {
-  move: function (key, direction) {
-    console.log(direction)
-  }
+
 
 }
 
 //player object to help manage player stuff
 var playerStuff = {
-  
-}
+  speed: 100,
+  //called when WASD to move sprite
+  move: function (key, direction) {
+    //directions: 1 = up,   2 = left,   3 = down,   4 = right
+    if (direction == 1){
+      //move up
+      playerStuff.player.body.velocity.y = playerStuff.speed * - 1;
+    } else if (direction == 2) {
+      //move left
+      playerStuff.player.body.velocity.x = playerStuff.speed * - 1;
+    } else if (direction == 3) {
+      //move down
+      playerStuff.player.body.velocity.y = playerStuff.speed;
+    } else {
+      //move right
+      playerStuff.player.body.velocity.x = playerStuff.speed;
+    } //else 
+  } //move function
+} //playerStuff Object
 
 AG.Map.prototype = {
   preload: function () {
@@ -31,13 +46,14 @@ AG.Map.prototype = {
     playerStuff.player.scale.y = 0.3;
     
     game.physics.enable(playerStuff.player);
+    
 
   },
   update: function(){
     //WASD keys to do stuff
-    game.input.keyboard.addKey(Phaser.Keyboard.W).onDown.add(helper.move, null, null, 1);
-    game.input.keyboard.addKey(Phaser.Keyboard.A).onDown.add(helper.move, null, null, 2);
-    game.input.keyboard.addKey(Phaser.Keyboard.S).onDown.add(helper.move, null, null, 3);
-    game.input.keyboard.addKey(Phaser.Keyboard.D).onDown.add(helper.move, null, null, 4);
+    game.input.keyboard.addKey(Phaser.Keyboard.W).onDown.add(playerStuff.move, null, null, 1);
+    game.input.keyboard.addKey(Phaser.Keyboard.A).onDown.add(playerStuff.move, null, null, 2);
+    game.input.keyboard.addKey(Phaser.Keyboard.S).onDown.add(playerStuff.move, null, null, 3);
+    game.input.keyboard.addKey(Phaser.Keyboard.D).onDown.add(playerStuff.move, null, null, 4);
   }
 };
