@@ -18,9 +18,9 @@ var buttonHelper = {
   },
   
   fixButtonPos: function () {
-    buttonHelper.playButton.x = buttonHelper.playButton.x - buttonHelper.playButton.width/2;
-    buttonHelper.settingsButton.x = buttonHelper.settingsButton.x - buttonHelper.settingsButton.width/2;
-    buttonHelper.creditsButton.x = buttonHelper.creditsButton.x - buttonHelper.creditsButton.width/2;
+    buttonHelper.playButton.x = buttonHelper.playButton.x + buttonHelper.playButton.width;
+    buttonHelper.settingsButton.x = buttonHelper.settingsButton.x + buttonHelper.settingsButton.width;
+    buttonHelper.creditsButton.x = buttonHelper.creditsButton.x + buttonHelper.creditsButton.width;
   },
   
   tweenButtons: function () {
@@ -49,7 +49,7 @@ AG.Menu.prototype = {
     console.log('You are in the Menu state');
     game.stage.backgroundColor = '#fff';
       
-    animHelper.robFront = game.add.sprite(100, 100, "robFrontIMG");
+    animHelper.robFront = game.add.sprite(-50, 0, "robFrontIMG");
     
     //create buttons
     buttonHelper.createButtons();
