@@ -76,7 +76,7 @@ var mapStuff = {
 
       //hold all coordinates for generic buildings
       genericBuildingStuff: {
-        coordsX: [130, 1000, 550, 1450, 150, 1430],
+        coordsX: [130, 980, 550, 1450, 150, 1430],
         coordsY: [200, 200, 750, 750, 1430, 1400],
         scaleX: [0.5, 0.5, 0.5, 0.5, 0.3, 0.5],
         scaleY: [0.5, 0.5, 0.6, 0.6, 0.4, 0.5]
@@ -106,6 +106,11 @@ var mapStuff = {
         mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding.scale.x = 0.3;
         mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding.scale.y = 0.3;
         mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray.push(mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding);
+        game.physics.enable( mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding);
+
+        mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding.body.immovable = true;
+        mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding.body.moves = false;
+        
       } //function createSpecialBuildings
     } //object specialBuildings
   } //object buildingStuff
@@ -169,9 +174,13 @@ AG.Map.prototype = {
       playerStuff.player.body.velocity.y = 0;
     } //if buttons not pressed
     
+    //building collision
     for (var i = 0; i <= mapStuff.buildingStuff.genericBuildingStuff.genericBuidlingArray.length; i++) {
       game.physics.arcade.collide(mapStuff.buildingStuff.genericBuildingStuff.genericBuidlingArray[i], playerStuff.player);  
     } //for building collision
+    for (var i = 0; i <= mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray.length; i++){
+      game.physics.arcade.collide(mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray[i], playerStuff.player); 
+    } //for buidling collision
     
   } //function update
 };
