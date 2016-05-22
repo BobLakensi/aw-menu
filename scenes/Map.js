@@ -111,6 +111,15 @@ var mapStuff = {
         mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding.body.immovable = true;
         mapStuff.buildingStuff.specialBuildingStuff.blackMarketBuilding.body.moves = false;
         
+        mapStuff.buildingStuff.specialBuildingStuff.newsStand = game.add.sprite(400, 250, "newsStandIMG");
+        mapStuff.buildingStuff.specialBuildingStuff.newsStand.scale.x = 0.3;
+        mapStuff.buildingStuff.specialBuildingStuff.newsStand.scale.y = 0.3;
+        mapStuff.buildingStuff.specialBuildingStuff.specialBuildingArray.push(mapStuff.buildingStuff.specialBuildingStuff.newsStand);
+        game.physics.enable( mapStuff.buildingStuff.specialBuildingStuff.newsStand);
+
+        mapStuff.buildingStuff.specialBuildingStuff.newsStand.body.immovable = true;
+        mapStuff.buildingStuff.specialBuildingStuff.newsStand.body.moves = false;
+        
       } //function createSpecialBuildings
     } //object specialBuildings
   } //object buildingStuff
