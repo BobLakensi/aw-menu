@@ -6,7 +6,6 @@ WebFontConfig = {
   google: { families: [ 'Montserrat::latin' ] }
 };
 
-//buttonHelper object to helper manage button stuff
 var buttonHelper = {
   durationOfAnim: 700,
   easeAnim: "Elastic",
